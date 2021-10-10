@@ -11,11 +11,11 @@ class Game:
         self.guesses = [" "]
 
     def create_phrases(self):
-        return [Phrase("I love Python"),
-        Phrase("testing phrases "),
-        Phrase("This is another phrase"),
-        Phrase("How many more do I need"),
-        Phrase("This will be the last one")]
+        return [Phrase("It is not a bug it is an undocumented feature"),
+                Phrase("Deleted code is debugged code"),
+                Phrase("Do not comment bad code rewrite it"),
+                Phrase("Java is to JavaScript what car is to carpet"),
+                Phrase("First solve the problem then write the code")]
 
     def get_random_phrase(self):
         return random.choice(self.phrases)
@@ -45,12 +45,15 @@ class Game:
             if not len(guess) == 1 or guess.lower() not in string.ascii_lowercase:
                 print("Please enter a valid character a-z")
                 continue
+            elif guess.lower() in self.guesses:
+                print(f"You've already guessed {guess.lower()}. Please pick another letter")
             else:
                 return guess
 
     def game_over(self):
         if self.missed == 5:
             print("You've lost, better luck next time!")
+            print(f"The phrase was: {self.active_phrase.phrase}")
         else:
             print("Congrats! You've won!")
 
