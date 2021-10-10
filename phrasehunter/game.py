@@ -42,7 +42,7 @@ class Game:
     def get_guess(self):
         while True:
             guess = input('\nEnter a letter: ').lower()
-            if len(guess) > 1 or guess.lower() not in string.ascii_lowercase:
+            if not len(guess) == 1 or guess.lower() not in string.ascii_lowercase:
                 print("Please enter a valid character a-z")
                 continue
             else:
